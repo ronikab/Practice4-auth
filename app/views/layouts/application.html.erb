@@ -41,11 +41,14 @@
         <h1 class="display-6 mb-4">Tacostagram</h1>
       </div>
       <div class="col-2 text-end">
+
       <% if @current_user != nil %>
         <a href="/posts/new/" class="btn btn-success">New Post</a>
          <% else %>
-        <p>Login to post!</p>
+<a href="/posts/new/" class="btn btn-success">New Post</a>
+        <!-- <p>Login to post!</p> -->
         <% end %>
+
       </div>
     </div>
 

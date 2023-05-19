@@ -6,18 +6,30 @@ class PostsController < ApplicationController
     end
   
     def new
+      if @current_user != nil
       @post = Post.new
+      else 
+      flash["notice"] = "Login to post!"
+      redirect_to "/login"
+      end
+
     end
   
     def create
-      if @current_user
+      if @current_user != nil
       @post = Post.new
       @post["body"] = params["post"]["body"]
       @post["image"] = params["post"]["image"]
       @post["user_id"] = @current_user["id"]
       @post.save
-      end
+      
       redirect_to "/posts"
+      
+      else 
+        flash["notice"] = "Login to post!"
+        redirect_to "/login"
+
+      end
     end
   
   end
